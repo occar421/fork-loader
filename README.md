@@ -1,2 +1,41 @@
 # fork-loader
-Webpack loader to fork input source into multiple downstreams
+
+[![CircleCI](https://circleci.com/gh/occar421/fork-loader/tree/master.svg?style=svg)](https://circleci.com/gh/occar421/fork-loader/tree/master)
+
+Webpack loader to fork input source into multiple down streams.
+
+## How to use
+
+```js
+      {
+        test: /\.html$/,
+        rules: [
+          // Do not add config here!
+          {
+            resourceQuery: /fork-tag=foo/, // specified this name by option "marker" of ./loader.js
+            oneOf: [
+              {
+                resourceQuery: /fork-id=a/,
+                loader: "noop-loader" // your loaders & configs
+              },
+              {
+                resourceQuery: /fork-id=b/,
+                loader: "noop-loader" // your other loaders & configs
+              },
+            ]
+          },
+          {
+            loader: "fork-loader",
+            options: {
+              tag: 'foo',
+              ids: ["a", "b"]
+            },
+          }
+        ]
+      }
+```
+
+In that config, "hoge.html" becomes both "hoge.html?tag=foo&id=a" & "hoge.html?tag=foo&id=b" and we can pass other loaders respectively.  
+If you want to nest it, see `nestedCompiler` in "./test/compiler.js".
+  
+Maybe this is similar with [multi-loader](https://github.com/webpack-contrib/multi-loader). 
