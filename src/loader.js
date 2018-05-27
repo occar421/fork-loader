@@ -19,6 +19,19 @@ const schema = {
   required: ["ids", "tag"]
 };
 
+const shouldEmitSource = (tag, tagQuery) => {
+  if (typeof tagQuery === "undefined") {
+    return false;
+  }
+  if (typeof tagQuery === "string") {
+    return tag === tagQuery;
+  }
+  if (Array.isArray(tagQuery)) {
+    return tagQuery.includes(tag);
+  }
+  return false;
+};
+
 module.exports = function loader(source) {
   this.cacheable();
 
@@ -28,13 +41,15 @@ module.exports = function loader(source) {
 
   const query = qs.parse(this.resourceQuery.slice(1));
 
-  if (typeof query["fork-tag"] !== "undefined") {
+  if (shouldEmitSource(options.tag, query["fork-tag"])) {
     return source;
   }
 
-  const requests = options.ids.map(id =>
-    stringifyRequest(this, this.resourcePath + `?fork-tag=${options.tag}&fork-id=${id}`)
-  );
+  const requests = options.ids.map(id => {
+    const newQuery =
+      this.resourceQuery + (this.resourceQuery.length === 0 ? "?" : "&") + `fork-tag=${options.tag}&fork-id=${id}`;
+    return stringifyRequest(this, this.resourcePath + newQuery);
+  });
 
   return requests.map(r => `import ${r};`).join("\n");
 };
