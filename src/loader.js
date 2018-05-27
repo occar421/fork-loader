@@ -28,12 +28,12 @@ module.exports = function loader(source) {
 
   const query = qs.parse(this.resourceQuery.slice(1));
 
-  if (typeof query["tag"] !== "undefined") {
+  if (typeof query["fork-tag"] !== "undefined") {
     return source;
   }
 
   const requests = options.ids.map(id =>
-    stringifyRequest(this, this.resourcePath + `?tag=${options.tag}&id=${id}`)
+    stringifyRequest(this, this.resourcePath + `?fork-tag=${options.tag}&fork-id=${id}`)
   );
 
   return requests.map(r => `import ${r};`).join("\n");
