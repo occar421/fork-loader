@@ -2,7 +2,7 @@
   "name": "fork-loader",
   "version": "0.1.0",
   "description": "Webpack loader to fork input source into multiple downstreams.",
-  "main": "src/loader.js",
+  "main": "dist/loader.js",
   "repository": "https://github.com/occar421/fork-loader",
   "author": "MasuqaT <occar@hotmail.co.jp>",
   "license": "MIT",
@@ -19,6 +19,8 @@
     "webpack": "^4.9.1"
   },
   "scripts": {
+    "build": "babel src --presets babel-preset-env --out-dir dist",
+    "prepublish": "npm run build",
     "test": "jest"
   },
   "dependencies": {
