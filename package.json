@@ -7,16 +7,16 @@
   "author": "MasuqaT <occar@hotmail.co.jp>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.0.0",
-    "babel-preset-env": "^1.7.0",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "jest": "^23.0.0",
-    "memory-fs": "^0.4.1",
-    "prettier": "^1.12.1",
-    "webpack": "^4.9.1"
+    "babel-core": "6.26.3",
+    "babel-jest": "23.0.0",
+    "babel-preset-env": "1.7.0",
+    "eslint": "4.19.1",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-prettier": "2.6.0",
+    "jest": "23.0.0",
+    "memory-fs": "0.4.1",
+    "prettier": "1.12.1",
+    "webpack": "4.9.1"
   },
   "scripts": {
     "test": "jest"
