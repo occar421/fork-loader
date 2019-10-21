@@ -1,0 +1,15 @@
+{
+  "extends": ["config:base"],
+  "timezone": "Asia/Tokyo",
+  "labels": ["renovate"],
+  "automerge": true,
+  "patch": {
+    "automerge": true
+  },
+  "minor": {
+    "automerge": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true
+  }
+}
