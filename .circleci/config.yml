@@ -1,27 +1,6 @@
 version: 2
 
 jobs:
-  build_6:
-    docker:
-      - image: circleci/node:6
-    working_directory: ~/node6
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-          - 6-dep-{{ checksum "package.json" }}
-          - 6-dep-
-
-      - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: 6-dep-{{ checksum "package.json" }}
-
-      - run: yarn test
-
   build_8:
     docker:
       - image: circleci/node:8
@@ -64,9 +43,30 @@ jobs:
 
       - run: yarn test
 
+  build_12:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/node12
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - 12-dep-{{ checksum "package.json" }}
+            - 12-dep-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: 12-dep-{{ checksum "package.json" }}
+
+      - run: yarn test
+
   deploy:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:10
     working_directory: ~/deploy
     steps:
       - checkout
@@ -80,14 +80,14 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - build_6
       - build_8
       - build_10
+      - build_12
       - deploy:
           requires:
-            - build_6
             - build_8
             - build_10
+            - build_12
           filters:
             branches:
               only: master
