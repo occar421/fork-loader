@@ -1,6 +1,8 @@
 # fork-loader
 
-[![CircleCI](https://circleci.com/gh/occar421/fork-loader/tree/master.svg?style=svg)](https://circleci.com/gh/occar421/fork-loader/tree/master)
+[![CircleCI](https://circleci.com/gh/occar421/fork-loader.svg?style=svg)](https://circleci.com/gh/occar421/fork-loader)
+[![npm version](https://img.shields.io/npm/v/fork-loader.svg)](https://www.npmjs.com/package/fork-loader)
+[![license](https://img.shields.io/github/license/occar421/fork-loader.svg)](https://choosealicense.com/licenses/)
 
 Webpack loader to fork input source into multiple down streams.
 
