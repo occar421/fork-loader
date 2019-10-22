@@ -62,6 +62,8 @@ jobs:
             - node_modules
           key: 12-dep-{{ checksum "package.json" }}
 
+      - run: yarn build
+
       - run: yarn test
 
   deploy:
@@ -70,8 +72,6 @@ jobs:
     working_directory: ~/deploy
     steps:
       - checkout
-
-      - run: yarn build
 
       - run: echo "registry=https://registry.npmjs.org/" > ~/.npmrc
       - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
