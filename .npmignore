@@ -1,0 +1,16 @@
+.circleci/
+node_modules/
+src/
+test/
+
+.babelrc
+.eslintrc
+.gitignore
+.npmignore
+.prettierrc
+jest.config.js
+renovate.json
+yarn.lock
+*.log
+.idea
+*.tgz
