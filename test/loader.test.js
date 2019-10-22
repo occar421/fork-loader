@@ -7,7 +7,7 @@ it("should deny when there is no option.", async () => {
   const status = await compiler(sourceFileName, {});
   expect(status.hasErrors()).toBe(true);
   const errorMessage = status.toJson().errors[0];
-  expect(errorMessage).toMatch(/no option/i);
+  expect(errorMessage).toMatch(/ValidationError/i);
 });
 
 it("should not include `export`.", async () => {
