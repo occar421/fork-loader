@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "loader-utils": "^2.0.0",
-    "schema-utils": "^2.0.0"
+    "schema-utils": "^3.0.0"
   },
   "keywords": [
     "webpack",
