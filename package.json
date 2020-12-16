@@ -10,11 +10,11 @@
     "@babel/cli": "7.12.10",
     "@babel/core": "7.12.10",
     "@babel/preset-env": "7.12.11",
-    "babel-jest": "25.5.1",
+    "babel-jest": "26.6.3",
     "eslint": "6.8.0",
     "eslint-config-prettier": "7.0.0",
     "eslint-plugin-prettier": "3.3.0",
-    "jest": "25.5.4",
+    "jest": "26.6.3",
     "memory-fs": "0.5.0",
     "prettier": "1.19.1",
     "webpack": "4.44.2"
