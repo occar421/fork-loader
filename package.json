@@ -1,7 +1,7 @@
 {
   "name": "fork-loader",
-  "version": "0.1.1",
-  "description": "Webpack loader to fork input source into multiple downstreams.",
+  "version": "0.2.0",
+  "description": "Webpack loader to fork input source into multiple downstream.",
   "main": "dist/loader.js",
   "repository": "https://github.com/occar421/fork-loader",
   "author": "MasuqaT <occar@hotmail.co.jp>",
