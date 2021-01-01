@@ -61,15 +61,11 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - build_8:
-          filters:
-            tags:
-              only: /^v.+/
-      - build_10:
-          filters:
-            tags:
-              only: /^v.+/
       - build_12:
+          filters:
+            tags:
+              only: /^v.+/
+      - build_14:
           filters:
             tags:
               only: /^v.+/
