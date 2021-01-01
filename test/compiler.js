@@ -12,11 +12,11 @@ export default (fixture, options) => {
           test: /.$/, // everything
           use: {
             loader: path.resolve(__dirname, "../src/loader.js"),
-            options: options
-          }
-        }
-      ]
-    }
+            options: options,
+          },
+        },
+      ],
+    },
   });
 
   compiler.outputFileSystem = new MemoryFs();
@@ -32,7 +32,7 @@ export default (fixture, options) => {
   });
 };
 
-export const nestedCompiler = fixture => {
+export const nestedCompiler = (fixture) => {
   const compiler = webpack({
     context: __dirname,
     entry: path.join(__dirname, `./${fixture}`),
@@ -52,27 +52,27 @@ export const nestedCompiler = fixture => {
                         loader: path.resolve(__dirname, "../src/loader.js"),
                         options: {
                           tag: "bar",
-                          ids: ["b"]
-                        }
-                      }
-                    }
-                  ]
-                }
-              ]
+                          ids: ["b"],
+                        },
+                      },
+                    },
+                  ],
+                },
+              ],
             },
             {
               use: {
                 loader: path.resolve(__dirname, "../src/loader.js"),
                 options: {
                   tag: "foo",
-                  ids: ["a"]
-                }
-              }
-            }
-          ]
-        }
-      ]
-    }
+                  ids: ["a"],
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
   });
 
   compiler.outputFileSystem = new MemoryFs();

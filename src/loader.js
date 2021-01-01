@@ -6,17 +6,17 @@ const schema = {
   type: "object",
   properties: {
     tag: {
-      type: "string"
+      type: "string",
     },
     ids: {
       type: "array",
       items: {
-        type: "string"
+        type: "string",
       },
-      minItems: 1
-    }
+      minItems: 1,
+    },
   },
-  required: ["ids", "tag"]
+  required: ["ids", "tag"],
 };
 
 const shouldEmitSource = (tag, tagQuery) => {
@@ -45,11 +45,11 @@ module.exports = function loader(source) {
     return source;
   }
 
-  const requests = options.ids.map(id => {
+  const requests = options.ids.map((id) => {
     const newQuery =
       this.resourceQuery + (this.resourceQuery.length === 0 ? "?" : "&") + `fork-tag=${options.tag}&fork-id=${id}`;
     return stringifyRequest(this, this.resourcePath + newQuery);
   });
 
-  return requests.map(r => `import ${r};`).join("\n");
+  return requests.map((r) => `import ${r};`).join("\n");
 };

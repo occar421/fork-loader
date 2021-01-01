@@ -39,5 +39,5 @@ Webpack loader to fork input source into multiple down streams.
 
 In that config, "hoge.html" becomes both "hoge.html?tag=foo&id=a" & "hoge.html?tag=foo&id=b" and we can pass other loaders respectively.  
 If you want to nest it, see `nestedCompiler` in "./test/compiler.js".
-  
-Maybe this is similar with [multi-loader](https://github.com/webpack-contrib/multi-loader). 
+
+Maybe this is similar with [multi-loader](https://github.com/webpack-contrib/multi-loader).
