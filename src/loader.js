@@ -1,5 +1,5 @@
 import { getOptions, stringifyRequest } from "loader-utils";
-import validateOptions from "schema-utils";
+import { validate } from "schema-utils";
 import qs from "querystring";
 
 const schema = {
@@ -37,7 +37,7 @@ module.exports = function loader(source) {
 
   const options = getOptions(this) || {};
 
-  validateOptions(schema, options, "No option is specified.");
+  validate(schema, options, "No option is specified.");
 
   const query = qs.parse(this.resourceQuery.slice(1));
 
