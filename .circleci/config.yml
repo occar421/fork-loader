@@ -1,48 +1,6 @@
 version: 2
 
 jobs:
-  build_8:
-    docker:
-      - image: circleci/node:8
-    working_directory: ~/node8
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-            - 8-dep-{{ checksum "package.json" }}
-            - 8-dep-
-
-      - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: 8-dep-{{ checksum "package.json" }}
-
-      - run: yarn test
-
-  build_10:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/node10
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-            - 10-dep-{{ checksum "package.json" }}
-            - 10-dep-
-
-      - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: 10-dep-{{ checksum "package.json" }}
-
-      - run: yarn test
-
   build_12:
     docker:
       - image: circleci/node:12
@@ -53,7 +11,6 @@ jobs:
       - restore_cache:
           keys:
             - 12-dep-{{ checksum "package.json" }}
-            - 12-dep-
 
       - run: yarn install
 
@@ -66,9 +23,31 @@ jobs:
 
       - run: yarn test
 
+  build_14:
+    docker:
+      - image: circleci/node:14
+    working_directory: ~/node14
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - 14-dep-{{ checksum "package.json" }}
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: 14-dep-{{ checksum "package.json" }}
+
+      - run: yarn build
+
+      - run: yarn test
+
   deploy:
     docker:
-      - image: circleci/node:10
+      - image: circleci/node:14
     working_directory: ~/deploy
     steps:
       - checkout
@@ -96,9 +75,8 @@ workflows:
               only: /^v.+/
       - deploy:
           requires:
-            - build_8
-            - build_10
             - build_12
+            - build_14
           filters:
             tags:
               only: /^v.+/
