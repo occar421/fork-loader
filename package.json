@@ -17,7 +17,7 @@
     "jest": "27.3.1",
     "memory-fs": "0.5.0",
     "prettier": "2.4.1",
-    "webpack": "5.64.2"
+    "webpack": "5.64.3"
   },
   "scripts": {
     "build": "babel src -d dist",
