@@ -24,7 +24,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "loader-utils": "^2.0.0",
+    "loader-utils": "^3.0.0",
     "schema-utils": "^4.0.0"
   },
   "keywords": [
